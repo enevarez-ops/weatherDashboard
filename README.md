@@ -11,7 +11,7 @@
 * [License](##-License)
  
 ## Deployed site
-[Weather Dashboard](Site-Link)
+[Weather Dashboard](https://enevarez-ops.github.io/weatherDashboard/)
 ![gif for site](gif-link)
  
 ## User Story
