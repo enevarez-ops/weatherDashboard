@@ -11,7 +11,7 @@
 * [License](##-License)
  
 ## Deployed site
-[Title of Site](Site-Link)
+[Weather Dashboard](Site-Link)
 ![gif for site](gif-link)
  
 ## User Story
