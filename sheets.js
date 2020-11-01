@@ -19,11 +19,11 @@ $(document).ready(function () {
 
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}";
-    //Search Button Value and input
-    $("#searchButton").on("click", function () {
-        var cityInput = $("#inputField").val();
-        $("#inputField").val("");
-        weatherSearch(cityInput);
+  //Search Button Value and input
+  $("#searchButton").on("click", function () {
+    var cityInput = $("#inputField").val();
+    $("#inputField").val("");
+    weatherSearch(cityInput);
   });
 
   //EVENT HANDLER for list
