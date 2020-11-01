@@ -2,6 +2,8 @@ $(document).ready(function (){
 //api for weatherDashboard to be used and variables
 var requestURL = "https://openweathermap.org/api"; 
 var apiKey ="1cc6e155505b32f27611acb105e29232";
+
+
 //local storage of searched cities
 var searchedCities = JSON.parse(localStorage.getItem("citySearched")) || [];
 //for loop to displayed searched cities from local storage
@@ -10,8 +12,8 @@ for (var i = 0; i <searchedCities.length; i++){
 }
 
 function listMaker(city){
-     var cityList = $("<li>").addClass("list-group-item list-group-item-action").text(city);
-     $("#listCity").append(cityList);
+     var li = $("<li>").addClass("list-group-item list-group-item-action").text(city);
+     $("#listCity").append(li);
 }
 
 
@@ -22,8 +24,10 @@ $("#searchButton").on("click", function(){
     weatherSearch(cityInput);
 })
 
+//EVENT HANDLER for list
 $("#listCity").on("click", "li", function(){
-    weatherSearch($(this).val());
+    weatherSearch($(this).text());
+    console.log($(this).text());
 })
 //Function for Current Weather Search
 function weatherSearch(cityInput){
@@ -44,12 +48,13 @@ function weatherSearch(cityInput){
     var newCard = $("<div>").addClass("card");
     var cardBody = $("<div>").addClass("card-body");
     var searchedCity = $("<h3>").addClass("card-title").text(data.name);
+    var weatherDates = $("<h5>").addClass("card-title").text(new Date().toLocaleDateString());
     var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
     var cityTemp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp);
     var cityHumidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity);
     var iconImage = $("<img>").attr("src", "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
     //appending data retrieved to card
-    searchedCity.append(iconImage);
+    searchedCity.append(weatherDates, iconImage);
     cardBody.append(searchedCity, windSpeed, cityTemp, cityHumidity);
     newCard.append(cardBody);
     $(".curChoice").append(newCard);
@@ -86,18 +91,25 @@ $.ajax({
         }
     };
 
+})
 
+}
+//UV index Function
+function uvIndex(){
+    $.ajax({
+        type: "GET",
+        url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon  + "&appid=" + apiKey,
+        dataType: "json"
+}).then(function(data) {
+    console.log(data);
+    
 })
 
 
-}
-
-
-
 
 
 
 
 }
 
-);
+});

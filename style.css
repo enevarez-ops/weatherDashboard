@@ -1,3 +1,9 @@
 h1 {
-    color: gray;
+    color:white;
+    text-align: center;
+    background-color: darkslategrey;
+}   
+
+.input-group {
+    margin-bottom: 16px;
 }
