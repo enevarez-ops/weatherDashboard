@@ -55,6 +55,8 @@ $.ajax({
             var cityTemp = $("<p>").addClass("card-text").text("Temperature: " + data.list[i].main.temp);
             var cityHumidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity);
             //appending data retrieved
+            cardBody.append(weatherDates, iconImage, cityTemp, cityHumidity);
+        
 
         }
     };
